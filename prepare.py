@@ -110,3 +110,10 @@ def min_max_scaler(X_train, X_validate, X_test):
     X_test_scaled = pd.DataFrame(scaler.transform(X_test), index = X_test.index, columns = X_test.columns)
     
     return scaler, X_train_scaled, X_validate_scaled, X_test_scaled
+
+def remove_outliers(df):
+    '''
+    This function will remove outliers of our target var in order to do better modeling
+    '''
+    new_df = df[(np.abs(stats.zscore(df['total_earnings'])) < 3)]
+    return new_df

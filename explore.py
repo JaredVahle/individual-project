@@ -70,9 +70,19 @@ def corr_two_vars(df,x,y):
     return r,p
 
 def plot_hist(df,col_list):
+    '''
+    Plots a histogram and uses .describe for the columns in col list.
+    '''
     for col in col_list:
+        print(col)
+        print(df[col].describe())
+        print("--------------------------")
         plt.rcParams['font.size'] = '16'
         hist = df[col].hist(figsize = (12,8), grid = True)
         hist.plot()
         plt.title(f'Distribution of {col}')
         plt.show()
+
+def multivar_scatter(df,x,y,hue):
+    plt.rcParams['font.size'] = '16'
+    
