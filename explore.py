@@ -68,3 +68,11 @@ def corr_two_vars(df,x,y):
         print("This correlation is statistically significant")
 
     return r,p
+
+def plot_hist(df,col_list):
+    for col in col_list:
+        plt.rcParams['font.size'] = '16'
+        hist = df[col].hist(figsize = (12,8), grid = True)
+        hist.plot()
+        plt.title(f'Distribution of {col}')
+        plt.show()
