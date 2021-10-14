@@ -11,25 +11,39 @@
 ![GitHub last commit](https://img.shields.io/badge/last%20commit-Sep%202021-green)
 
 <!-- Describe your project in brief -->
+Link to the original dataset (https://www.kaggle.com/jackogozaly/data-science-and-stem-salaries)
 
+I was interested in looking deeper into datascience salary and education requirements. In this project I used the data above to create a linear regression model for predicting yearly earnings.
 
 
 
 # Executive Summary
 <!-- Add a demo for your project -->
 
-### Goals
+**Project Goals**
+
+Build a linear regression model to predict total yearly earnings for Tech, and STEM jobs.
+
+**Data summary**
+
+- The dataset was halved in size after cleaning.
+- Education level, location, years of experience were used in modeling.
+
+**Conclusion**
+
+The main features that drive earnings for employees in the tech and stem jobs, is location, education, and experience. If you are willing to move you can make much larger amounts of money. I would also recomend that if you find or initially are with a company that you enjoy, it is financially worth it to continue working and trying to move up in that company.
 
 
 ### Statistical testing:
-
-
-
-### Takeaways/keypoints
+- From the statistical test there is no difference between male and female earnings in the dataset.
+- You make more money staying at one company vs moving companies when both employees have similar work experience.
+- Employees with lower education make less then employees with higher education
+- There is a relationship between location and total earnings.
 
 
 ### Recommendations
-
+- If you are in it for the money it might be worth it to pursue a masters or doctorate degree.
+- Location plays a factor in pay, if your life circumstances allow for it, moving to an area with higher pay could increase your salary.
 
 # Table of contents
 <!-- Add a table of contents for your project -->
@@ -75,18 +89,12 @@ Following best practices I documented my progress throughout the project and wil
 ### Acquire
 [(Back to top)](#table-of-contents)
 <!-- Describe your acquire process -->
-The data was acquired from the Codeup MySQL server using the zillow database. I pulled every property from the properties_2017 table (later in prepare I will filter this down further) and joined the following tables:
-
-- airconditioningtype (for labeling purposes)
-- architecturalstyletype (for labeling purposes)
-- buildingclasstype (for labeling purposes)
-- heatingorsystemtype (for labeling purposes)
-- predictions_2017 (for logerror which will be our target)(( I also filtered by transaction date and parcel id to handle duplicates))
+The data was acquired from keggle. I downloaded a csv of the data, and put that data into a pandas dataframe
 
 My goal with this acquisition was to give me as much data as possible moving foward.
 At this point our data has
-* *77614 rows*
-* *74 columns*
+* *62642 rows*
+* *29 columns*
 
 This can all be found in my acquire.py file in my github
 
@@ -95,63 +103,26 @@ This can all be found in my acquire.py file in my github
 <!-- Describe your prepare process -->
 Performed the following on my acquired data.
 
-- dropped null values from columns and rows which had less than 50% of the values.
-- dropped all data from properties that where not single value homes
-    - I quantified single family homes as properties with a propertylandusetypeid of:
-        - 261	Single Family Residential
-        - 262	Rural Residence
-        - 263	Mobile Home
-        - 264	Townhouse
-        - 265	Cluster Home
-        - 268	Row House
-        - 273	Bungalow
-        - 275	Manufactured, Modular, Prefabricated Homes
-        - 276	Patio Home
-        - 279	Inferred Single Family Residential
-- dropped the duplicated columns pulled over from the sql inquiry
-- removed outliers by upper and lower iqr fences from
-    - calculatedfinishedsquarefeet
-    - bedroomcnt
-    - bathroomcnt
-    - taxvaluedollarcnt
-    - calculatedfinishedsquarefeet
-- Further removed outliers manually with the following conditions
-    - bathroom count or bedroom count greater than 7
-    - bathroom coutnt or bedroom count less than 1 
-    - properties with greater than 200000 square feet for lot size
-    - properties with a square footage above 8,000
-- Drops columns that have no use
-    - id because its a usless and duplicated
-    - heatingorsystemtypeid because it was missing about 20k values to much to fill
-    - heatingorsystemdesc because it was missing about 20k values to much to fill
-    - propertylandusetypeid is useless to me after the dropping irrelevant data earlier
-    - buildingqualitytypeid because it was missing about 20k values to much to fill
-    - rawcensustractandblock useless data to me
-    - unitcnt is useless to me after the dropping irrelevant data earlier
-    - propertyzoningdesc because it was missing about 20k values to much to fill
-    - censustractandblock isn't useful to me
-    - calculatedbathnbr data is inconsistent 
-    - finishedsquarefeet12 calculatedsquarefeet is a better metric
-    - fullbathcnt redundant to bathroom count
-    - assessmentyear values are all 2016
-    - propertylandusetypeid because the data was filtered already. 
-    - roomcnt because it is inconsistent with data
-    - county because we already created dummy variables to enumerate it.
-- Created boolean columns for county
-- Replace fips with county column for exploration purposes.
-- Removed lot sizes of over 200000, when working witht he data I found these values suspicious and dont believe they will be useful.
-- Filled null values in the following columns
-    - year built (filled nulls with 2017)
-    - lotsizesquarefeet (filled nulls with median ie. 7313)
-    - buildingqualitytypeid (filled nulls with most common ie. 6)
-- Dropped remaining null values
-- Created a column for tax value that gives a percentage tax rate on the property
-- Created a column for structure cost per square foot
-- Created a column for land cost per square foot
-- Renamed several columns for readability.
+**General Breakdown**
+
+- Breakdown of my prep for my models prepare/clean function:
+    - Function creates a dummy variable for title and concats it with the current dataframe.
+    - Drops columns that are not useful, or would make the dataset too large to use dummies on.
+    - Drops nulls, removes any rows that do not have education documented.
+    - Renames some columns for readability.
+    - Adds a column for highly experienced.
+    
+- Breakdown of my prep for my explore prepare/clean fucntion:
+    - Creates dummy variable for gender.
+    - Removes some columns I do not want insite about or that contain to many nulls.
+    - Drops nulls, removes any rows that do not have education documented.
+    - Renames some columns for readability.
+    - Adds a column for highly experienced.
+
+**The reason that there are two data clean functions is because they contain the same data, although I wanted some deeper exploration into some extra variables that couldnt be translated into my model given the timeframe.**
 
 At this point our data has
-* *57889 rows*
+* *29946 rows*
 * *25 columns*
 
 We will now split our data into train, validate, and split.
@@ -162,21 +133,19 @@ We will now split our data into train, validate, and split.
 [(Back to top)](#table-of-contents)
 <!-- Describe your explore process -->
 
-- Visualized using both univariate analysis and bivariate
-- Ran five statistical test comparing different variables and log error
-- Created three different clusters 
-    - Cluster 1: uses longitude and latitude
-    - Cluster 2: uses longitude latitude and square footage
-    - Cluster 3: uses bedroom bathroom and tax value
+- Visualized using both univariate analysis and bivariate, and with more time i will do multivariate exploration.
+- Ran four statistical test comparing different variables and total earnings.
 
 ### Model
 [(Back to top)](#table-of-contents)
 <!-- Describe your modeling process -->
-Model types: linear regression, lasso lars, tweedie, polynomial 3rd degree
-**Winning model: linear regression**
-Created 4 different models using bathrooms,bedrooms,square_footage,cluster 2, and cluster 3 as features.
-Baseline RMSE on test data: 0.1656757
-**My models RMSE on test data: 0.1656116**
+Model types: linear regression, polynomial 3rd degree, lasso lars, tweedie, Decision Tree Regression.
+**Winning model: Decision Tree Regression**
+The features used were "yearsofexperience","highly_experienced","doctorate_degree","bachelors_degree","cityid".
+Baseline RMSE on test data: 107140.062039
+**My models RMSE on test data: 74904.849480**
+
+This is a significant improvement over the baseline, with a prediction average of over 30,000$ better then the baseline model.
 
 ### Evaluate
 [(Back to top)](#table-of-contents)
@@ -186,21 +155,26 @@ I gathered the RMSE and R^2 for all of my models and put them into dataframes fo
 # Conclusion
 [(Back to top)](#table-of-contents)
 <!-- Wrap up with conclusions and takeaways -->
-- We were able to find some indicators of of log error but will definetly need more time to create a better model.
-- the model beat the baseline by a slim margin.
-- Both my model and the baseline had an **RMSE of ~.1656**
+The decision Tree regression model outperformed the baseline by **~32,236$**
 
-# Given More Time
+Many features were found that can be used to find the salary of employees.
+The biggest factors were:
+
+- experience
+- location
+- education
+
+# Given More Time/ Next steps
 [(Back to top)](#table-of-contents)
 <!-- LET THEM KNOW WHAT YOU WISH YOU COULD HAVE DONE-->
-- I could spend 1000 hours and still continue learning new things about this data.
-- I would try to make clusters that target on a neighborhood level, seeking values that the homes on the same street sold for.
-- I would also improve on my models using my current model as the new baseline.
+- Create clusters in the data, that will make my model more successful.
+- Find a way to numerate some of the columns that were strings.
+- Go deeper into exploration, ask more probing questions from the data.
 # Recreate This Project
 [(Back to top)](#table-of-contents)
 <!-- How can they do what you do?-->
 **To Recreate This Project**
-- Create your own username and password in order to access the Codeup SQL database.
+- Create a copy of the kaggle dataframe, and run the wrangle functions to get the same cleaned dataframe.
 - I created a wrangle file that will do all of the acquir/prepare stage.
 - Use the seed 174
 - Importing all of my modules and utilizing them will help expadite the process.
@@ -209,4 +183,3 @@ I gathered the RMSE and R^2 for all of my models and put them into dataframes fo
 <!-- LET THEM KNOW WHO YOU ARE (linkedin links) close with a joke. -->
 You can find the rest of my work here: https://github.com/JaredVahle
 Add me on Linkedin here: https://www.linkedin.com/in/jared-vahle-data-science/
-Check out my Trello board here: https://trello.com/b/nvbynjZ6/clustering-zillow-data
