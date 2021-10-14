@@ -1,10 +1,9 @@
 
-# Beating the Zestimate
 
 <!-- Add banner here -->
 ![Banner](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.commercialintegrator.com%2Fbusiness_resources%2Foperations%2Fu-s-tech-jobs-5-cities%2F&psig=AOvVaw3MhgmvWmgRiqDOP47GnjDW&ust=1634182673315000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNja7Iu7xvMCFQAAAAAdAAAAABAJ)
 
-# Zillow Clustering Project
+# Estimating Salaries or Jobs in Tech
 
 <!-- Add buttons here -->
 
@@ -56,36 +55,22 @@
 
 | Feature                    | Datatype                | Definition   |
 |:---------------------------|:------------------------|:-------------|
-| parcelid| 55513 non-null: int64|individual id for unique properties|
-| baths| 55513 non-null: float64|# of bathrooms a property has|
-| beds| 55513 non-null: float64|# of bedrooms a property has|
-| sqft| 55513 non-null: float64|calculated square footage of home|
-| latitude| 55513 non-null: float64 |where the porperty is located in refrence to latitude|
-| longitude| 55513 non-null: float64 |where the porperty is located in refrence to  longitude|
-| lotsizesquarefeet| 55513 non-null: float64 |the square footage of the land the propety resides on|
-| regionidcity| 55513 non-null: object|unique identifier for cities the property is in|
-| regionidzip| 55513 non-null: object|uniques identifier for the zip code the propert resides in|
-| year_built| 55513 non-null: float64|year the property was built|
-| structuretaxvaluedollarcnt| 55513 non-null: float64 |the estimated tax value of the property itself|
-| tax_value| 55513 non-null: float64 |the estimated tax value of the property|
-| landtaxvaluedollarcnt| 55513 non-null: float64 |the estimated tax value of the land the property is on|
-| tax_amount| 55513 non-null: float64 |how much the owner of the property must pay this year|
-| logerror| 55513 non-null: float64 |the target of this project (error produced in predictions)|
-| transactiondate| 55513 non-null: object  |date property was sold|
-| propertylandusedesc| 55513 non-null: object  |what the property is listed as ex.(Single family)|
-| LA| 55513 non-null: uint8|whether or not the propert resides in LA county|
-| Orange| 55513 non-null: uint8|whether or not the propert resides in Orange county|
-| Ventura| 55513 non-null: uint8|whether or not the propert resides in Ventura county|
-| county| 55513 non-null: object|The county the resident resides in|
-| taxrate| 55513 non-null: float64 |gives the tax rate for each property|
-| structure_dollar_per_sqft| 55513 non-null: float64 |gives the structures cost per square foot|
-| land_dollar_per_sqft| 55513 non-null: float64 |gives the land cost per square foot|
-
+| total_earnings|int64|Gives a sum of the total earnings|
+| yearsofexperience|Float64|Gives the number of years an employee has in that field|
+| yearsatcompany|Float64|Gives the number of years an employee was at that company|
+| cityid|int64|Returns a number for the city the job is located in|
+| masters_degree|int64|Bool 1 for if they have a masters degree 0 if they do not|
+| bachelors_degree|int64|Bool 1 for if they have a bachelors degree 0 if they do not|
+| doctorate_degree|int64|Bool 1 for if they have a doctorate degree 0 if they do not|
+| highschool|int64|Bool 1 for if they have highschool education 0 if they do not|
+| some_college|int64|Bool 1 for if they have some college  0 if they do not|
+| title_*|uint8|Bool title columns were created 1 for if they held that title 0 if they did not|
+| highly_experienced| int64|Bool 1 for if the employee has over 4 years of experience 0 if not|
 
 # Data Science Pipeline
 [(Back to top)](#table-of-contents)
 <!-- Describe your Data Science Pipeline process -->
-Following best practices I documented my progress throughout the project and will provide quick summaries and thoughts here. For a further deep dive visit my (enter explore notebook here) & (enter final notebook here)
+Following best practices I documented my progress throughout the project and will provide quick summaries and thoughts here.
 
 ### Acquire
 [(Back to top)](#table-of-contents)
