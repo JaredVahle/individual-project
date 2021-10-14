@@ -43,6 +43,14 @@ Build a linear regression model to predict total yearly earnings for Tech, and S
 - If you are in it for the money it might be worth it to pursue a masters or doctorate degree.
 - Location plays a factor in pay, if your life circumstances allow for it, moving to an area with higher pay could increase your salary.
 
+# Project Summary
+
+### Problem Statement:
+Currently the datascience field, aswell as the tech industry as a whole is a complicated place to navigate, what cradentials are needed how much money will you make. These are some of the questions I have been presented as I pursue a career in datascience.
+
+### Proposed solution:
+If avalible make yourself open to shifts in your life patterns, some jobs might demand relocation in order to find your dream salary, continue furthering your education over time, While it it not necesarry especially in the world we are currently living in, having a degree will come as a great asset. Try to find an employer that will foster your growth through tuition assistance or other means. Lastly find a company that you enjoy and treats you well and stick with them, the companies have room for growth and you will increase your salary on average if you continue growing along side the company you work for.
+
 # Table of contents
 <!-- Add a table of contents for your project -->
 
@@ -183,6 +191,7 @@ The biggest factors were:
 [(Back to top)](#table-of-contents)
 <!-- How can they do what you do?-->
 **To Recreate This Project**
+Link to the original dataset (https://www.kaggle.com/jackogozaly/data-science-and-stem-salaries)
 - Create a copy of the kaggle dataframe, and run the wrangle functions to get the same cleaned dataframe.
 - I created a wrangle file that will do all of the acquir/prepare stage.
 - Use the seed 174
