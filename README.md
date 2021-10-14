@@ -8,7 +8,7 @@
 <!-- Add buttons here -->
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/badge/release-draft-yellow)
-![GitHub last commit](https://img.shields.io/badge/last%20commit-Sep%202021-green)
+![GitHub last commit](https://img.shields.io/badge/last%20commit-Oct%202021-green)
 
 <!-- Describe your project in brief -->
 Link to the original dataset (https://www.kaggle.com/jackogozaly/data-science-and-stem-salaries)
@@ -20,6 +20,8 @@ I was interested in looking deeper into datascience salary and education require
 # Executive Summary
 <!-- Add a demo for your project -->
 
+The main features that drive earnings for employees in the tech and stem jobs, is location, education, and experience. If you are willing to move you can make much larger amounts of money. I would also recomend that if you find or initially are with a company that you enjoy, it is financially worth it to continue working and trying to move up in that company.
+
 **Project Goals**
 
 Build a linear regression model to predict total yearly earnings for Tech, and STEM jobs.
@@ -28,10 +30,6 @@ Build a linear regression model to predict total yearly earnings for Tech, and S
 
 - The dataset was halved in size after cleaning.
 - Education level, location, years of experience were used in modeling.
-
-**Conclusion**
-
-The main features that drive earnings for employees in the tech and stem jobs, is location, education, and experience. If you are willing to move you can make much larger amounts of money. I would also recomend that if you find or initially are with a company that you enjoy, it is financially worth it to continue working and trying to move up in that company.
 
 
 ### Statistical testing:
@@ -163,6 +161,9 @@ I gathered the RMSE and R^2 for all of my models and put them into dataframes fo
 # Conclusion
 [(Back to top)](#table-of-contents)
 <!-- Wrap up with conclusions and takeaways -->
+
+The main features that drive earnings for employees in the tech and stem jobs, is location, education, and experience. If you are willing to move you can make much larger amounts of money. I would also recomend that if you find or initially are with a company that you enjoy, it is financially worth it to continue working and trying to move up in that company.
+
 The decision Tree regression model outperformed the baseline by **~32,236$**
 
 Many features were found that can be used to find the salary of employees.
