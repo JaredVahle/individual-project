@@ -141,8 +141,16 @@ We will now split our data into train, validate, and split.
 <!-- Describe your modeling process -->
 Model types: linear regression, polynomial 3rd degree, lasso lars, tweedie, Decision Tree Regression.
 **Winning model: Decision Tree Regression**
-The features used were "yearsofexperience","highly_experienced","doctorate_degree","bachelors_degree","cityid".
+The features used were:
+- yearsofexperience
+- highly_experienced
+- doctorate_degree
+- bachelors_degree
+- cityid
+
+
 Baseline RMSE on test data: 107140.062039
+
 **My models RMSE on test data: 74904.849480**
 
 This is a significant improvement over the baseline, with a prediction average of over 30,000$ better then the baseline model.
@@ -181,5 +189,7 @@ The biggest factors were:
 # Footer
 [(Back to top)](#table-of-contents)
 <!-- LET THEM KNOW WHO YOU ARE (linkedin links) close with a joke. -->
+
 You can find the rest of my work here: https://github.com/JaredVahle
+
 Add me on Linkedin here: https://www.linkedin.com/in/jared-vahle-data-science/
