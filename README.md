@@ -1,7 +1,7 @@
 
 
 <!-- Add banner here -->
-![Banner](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.commercialintegrator.com%2Fbusiness_resources%2Foperations%2Fu-s-tech-jobs-5-cities%2F&psig=AOvVaw3MhgmvWmgRiqDOP47GnjDW&ust=1634182673315000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNja7Iu7xvMCFQAAAAAdAAAAABAJ)
+![Banner](85.jpeg)
 
 # Estimating Salaries or Jobs in Tech
 
